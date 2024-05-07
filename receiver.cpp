@@ -88,7 +88,7 @@ int main(int argc, char *argv[]) {
 			}
 
 			if (strncmp(received_data, packet_str[seq_num], PACKET_SIZE) != 0) {		
-				printf("\"%s\" is received and buffered.\n", received_data); 	
+				printf("\"%s\" is received and buffered.", received_data); 	
 
 				seq_num = seq_num + 1;
 				start = seq_num - 1;
@@ -106,7 +106,7 @@ int main(int argc, char *argv[]) {
 				strcpy(tempArr[seq_num], received_data);
 
     		}else{ 		//정상인 경우
-				printf("\"%s\" is received.\n", received_data);
+				printf("\"%s\" is received.", received_data);
 				char ack_buf[BUFSIZE];
 
 				sprintf(ack_buf, "ACK %d", seq_num); 
@@ -133,7 +133,7 @@ int main(int argc, char *argv[]) {
 			}
 			seq_num++;
 			strcpy(tempArr[seq_num], received_data);
-			printf("\"%s\" is received and buffered.\n", received_data); 	
+			printf("\"%s\" is received and buffered.", received_data); 	
 			printf("\"ACK %d\" is transmitted.\n", seq_num); 
 			end = seq_num;
 
