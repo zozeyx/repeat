@@ -66,13 +66,13 @@ int main(int argc, char *argv[]){
 	//우선 먼저 4개를 보냄
 	for(int i=0; i<WINDOW_SIZE; i++){		
 		end++;
-		retval = send(sock, packet_str[t], strlen(packet_str[t]), 0);
+		retval = send(sock, packet_str[end], strlen(packet_str[end]), 0);
     	if (retval == SOCKET_ERROR) {
    			err_display("send()");
         	break;
     	}
 
-		for(int j=0; j<=t; j++){
+		for(int j=0; j<=end; j++){
 			if(ackCheck[j]==1){		
 				continue;
 			}
@@ -82,7 +82,7 @@ int main(int argc, char *argv[]){
 				break;
 			}
 		}
-		printf("\"%s\" is transmitted.\n", packet_str[t]);		
+		printf("\"%s\" is transmitted.\n", packet_str[end]);		
 	}	
 
 	for(int i=0; i<5; i++){
@@ -103,19 +103,19 @@ int main(int argc, char *argv[]){
 				acknum++;
 				start++;
 				end++;
-				retval = send(sock, packet_str[t], strlen(packet_str[t]), 0);	
+				retval = send(sock, packet_str[end], strlen(packet_str[end]), 0);	
 				if (retval == SOCKET_ERROR) {
 					err_display("send()");
 					break;
 				}
-				printf("\"%s\" is transmitted.\n", packet_str[t]);		
+				printf("\"%s\" is transmitted.\n", packet_str[end]);		
 
 			} else {
 				printf("\"%s\" is recevied and recorded.\n", buf);		
 				
 			}
 			
-			for(int j=0; j<=t; j++){		
+			for(int j=0; j<=end; j++){		
 				if(ackCheck[j]==1){		
 					continue;
 				}
